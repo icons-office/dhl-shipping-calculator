@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DHL送料見積計算</title>
+    <script type="module" crossorigin src="./index-B5qVCd4Z.js"></script>
+    <link rel="stylesheet" crossorigin href="./index-Dl61wA79.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">DHL / eBay SpeedPAK Expedited</p>
+          <h1>DHL送料見積計算</h1>
+        </div>
+        <div id="data-status" class="data-status" aria-live="polite">料金データを読み込んでいます…</div>
+      </header>
+
+      <section class="workspace" aria-label="送料計算">
+        <form id="calculator-form" class="input-card" novalidate>
+          <h2>梱包後のサイズと実重量を入力</h2>
+          <div class="input-grid">
+            <label>縦 <span>cm</span><input id="length" name="length" inputmode="decimal" autocomplete="off" /></label>
+            <label>横 <span>cm</span><input id="width" name="width" inputmode="decimal" autocomplete="off" /></label>
+            <label>高さ <span>cm</span><input id="height" name="height" inputmode="decimal" autocomplete="off" /></label>
+            <label>実重量 <span>kg</span><input id="actual-weight" name="actualWeight" inputmode="decimal" autocomplete="off" /></label>
+          </div>
+          <p id="input-message" class="message" aria-live="assertive"></p>
+          <div class="actions">
+            <button class="primary" type="submit">計算する</button>
+            <button id="reset-button" class="secondary" type="button">リセット</button>
+          </div>
+        </form>
+
+        <section class="result-card" aria-label="計算結果">
+          <div id="empty-result" class="empty-result">入力後、「計算する」を押してください。</div>
+          <div id="result-content" hidden>
+            <div class="headline-results">
+              <div><span class="result-label">送料見積額</span><strong id="estimated-shipping">—</strong></div>
+              <div><span class="result-label">重量区分</span><strong id="weight-category" class="category">—</strong></div>
+            </div>
+            <dl class="result-grid">
+              <div><dt>実重量</dt><dd id="actual-result">—</dd></div>
+              <div><dt>容積重量</dt><dd id="volumetric-result">—</dd></div>
+              <div><dt>適用重量</dt><dd id="applied-result">—</dd></div>
+              <div><dt>DHL請求重量</dt><dd id="billed-result">—</dd></div>
+              <div><dt>DHL基本料金</dt><dd id="base-rate-result">—</dd></div>
+              <div><dt>燃油サーチャージ率</dt><dd id="fuel-rate-result">—</dd></div>
+              <div><dt>燃油サーチャージ額</dt><dd id="fuel-amount-result">—</dd></div>
+            </dl>
+            <div class="result-actions">
+              <button id="copy-button" class="secondary" type="button">結果をコピー</button>
+              <span id="copy-message" class="success" aria-live="polite"></span>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <footer class="data-footer">
+        <div>料金データ更新日：<strong id="updated-at">—</strong></div>
+        <div>DHL料金適用開始日：<strong id="effective-date">—</strong></div>
+        <div id="cached-at-wrap" hidden>ブラウザ保存日時：<strong id="cached-at">—</strong></div>
+        <button id="reload-button" class="text-button" type="button">料金データを再読込</button>
+      </footer>
+    </main>
+  </body>
+</html>
